@@ -6,6 +6,6 @@ def main():
     v = input("Enter a verb:")
     adj = input("Enter an adjective:")
     place = input("Enter a place:")
-    print("Take your", adj, n, "and", v, "it at the", place!)
+    print("Take your", adj, n, "and", v, "it at the", place,"!") # JA
 main()
     
