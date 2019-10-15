@@ -6,10 +6,13 @@ def main():
     while True:
         print("The program is thinking of an animal")
         guess = input("Guess the name of the animal: ")
-        if guess != name:
-            print("Wrong guess. Please try again")
-        else:
+        if guess == "quit":
+            print("You quit the game.")
+            break
+        elif guess.lower() == name.lower():
             print("Congratulations you guessed correctly! The animal name is dog")
             break
+        else:
+            print("Wrong guess. Please try again")
         
 main()
