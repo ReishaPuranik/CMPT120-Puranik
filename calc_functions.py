@@ -2,9 +2,13 @@
 # Author: Reisha Puranik
 # Date: October 11, 2019
 
+# JA: You should move the main function to the calculator.py file
 
 def main():
     mylist = input("Enter equation to be solved: ").split()
+    print(solve(mylist))
+
+def solve(mylist):
     while len(mylist) > 1:
         #This operation divides numbers
         if "/" in mylist:
@@ -40,6 +44,7 @@ def main():
             print(mylist)
         else:
             print("Invalid operation")
+    return mylist[0]
             
 main()
 
