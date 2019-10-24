@@ -2,6 +2,7 @@
 # Author: Reisha Puranik
 # Date: October 11, 2019
 
+# JA: You should move the main function to the calculator.py file
 
 def process(eq, op):
     if op == '/':
@@ -35,7 +36,6 @@ def process(eq, op):
         eq.insert(index-1, result)
     else:
         print("Invalid operation")
-
 
 def solve(eqStr):
     eq = eqStr.split()
