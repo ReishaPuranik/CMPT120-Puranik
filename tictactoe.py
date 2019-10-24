@@ -42,7 +42,7 @@ def main():
         printBoard(board)
         row,col = getPlayerMove()
         if not markBoard(board,row,col,player):
-            print("Choose anothr position")
+            print("Choose another position")
         else:
             player = player % 2 + 1 
     printBoard(board)
