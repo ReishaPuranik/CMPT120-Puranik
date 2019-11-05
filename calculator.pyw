@@ -2,6 +2,8 @@
 # Author: Reisha Puranik
 # Date: October 11, 2019
 
+# You should add comments to your code
+
 from calc_functions import * 
 from graphics import *
           
