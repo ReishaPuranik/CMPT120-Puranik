@@ -1,72 +1,67 @@
-# Introduction to Programming Project 1
-# Author: Reisha Puranik
-# Date: October 11, 2019
-
-from calc_functions import * 
+# calculator.pyw
 from graphics import *
-          
+from calc_functions import *
 
-def checkButton(point):
-    for coord in coords:
-        index = inside(coord)
-        if index == 1:
-            return (label[index])
+def drawButton(button, win):
+    x = button[0]
+    y = button[1]
+    label = button[2]
+    width = button[3]
 
-def createGui(win, coords, labels):
-    for row in coords:
-        rowIndex = coords.index(row)
-        for button in row:
-            colIndex = row.index(button)
-            aRectangle = Rectangle(Point(button[0]-15, button[1] - 15),  Point(button[0]+15, button[1]+15))
-            aRectangle.setFill("lightblue")
-            aRectangle.draw(win)
-            Text(Point(button[0],button[1]),labels[rowIndex][colIndex]).draw(win)
-        
+    # Create the rectangle for the button
+    rect = Rectangle(Point(x + width/2, y - width/2),
+                     Point(x - width/2, y + width/2))
+    rect.draw(win)
+    rect.setFill("lightblue")
+    # Add the label
+    text = Text(Point(x,y), label)
+    text.draw(win)
 
-def getLabel(click, coords, labels):
-    for row in coords:
-        for col in row:
-            if click.getX() >= col[0] - 15 and click.getX() <= col[0] + 15 and click.getY() >= col[1] -15 and click.getY() <= col[1] + 15:
-                return labels[coords.index(row)][row.index(col)]
+def isButtonPressed(button, p):
+    x = button[0]
+    y = button[1]
+    width = button[3]    
+    return p.getX() + width/2 >= x and p.getX() - width/2 <= x \
+           and p.getY() - width/2 <= y and p.getY() + width/2 >= y
 
-def display(win, displayCoords):
-    display = Rectangle(Point(0, 0), Point(125, 50)).draw(win)
-    display.setFill("grey")
-    
+def drawKeypad(buttons,win):
+    for button in buttons:
+        drawButton(button, win)
+
+def getLabel(buttons, p):
+    for button in buttons:
+        if isButtonPressed(button,p):
+            return button[2]
+
+def solveEquation(equation):
+    return 0
+
+def buildEquation(equation,label):
+    return ""
+
+def displayEquation(equation,win):
+    pass
+
 def main():
-    win = GraphWin("Calculator", 150, 250)
-    win.setBackground("white")
-    coords = [[[20,50], [55, 50], [90,50], [125,50]],
-              [[20,85], [55, 85], [90,85], [125,85]],
-              [[20,120],[55,120], [90,120],[125,120]],
-              [[20,155],[55,155], [90,155],[125,155]],
-              [[20,190],[55,190], [90,190],[125,190]]]
+    buttons = [[.5,.5,'+/-',1],[1.5,.5,'0',1],[2.5,.5,'.',1],[3.5,.5,'=',1],
+               [.5,1.5,'1',1],[1.5,1.5,'2',1],[2.5,1.5,'3',1],[3.5,1.5,'+',1],
+               [.5,2.5,'4',1],[1.5,2.5,'5',1],[2.5,2.5,'6',1],[3.5,2.5,'-',1],               
+               [.5,3.5,'7',1],[1.5,3.5,'8',1],[2.5,3.5,'9',1],[3.5,3.5,'*',1]]
     
-    labels = [["7", "8", "9", "/"],
-              ["4", "5", "6", "*"],
-              ["1", "2", "3", "+"],
-              ["+/-", "0", ".", "-"],
-              [" ", " ", "Del", "="]]
-    
-    
-    createGui(win, coords, labels)
+    win = GraphWin('Calculator',400,600)
+    win.setCoords(0, 0, 4, 6)
+    drawKeypad(buttons, win)
+    equation = ""
+    display = ""
     while True:
         click = win.getMouse()
-        label = getLabel(click, coords, labels)
+        label = getLabel(buttons,click)
         print(label)
-
-    display(win, displayCoords)
-    while True:
-        eq = solve(eqStr)
-        text.setText(solve(eqStr))
-           
+        if label == '=':
+            equation = solveEquation(equation)
+            setText = buildEquation(equation,label)
+        else:
+            equation = buildEquation(equation,label)
+        displayEquation(equation,display)
         
-        
-    
-    
-        
-main()
-
-
-
-            
+main()   
