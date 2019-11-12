@@ -1,4 +1,11 @@
+
 # calculator.pyw
+# Introduction to Programming Project 1
+# Author: Reisha Puranik
+# Date: October 11, 2019
+
+# You should add comments to your code
+
 from graphics import *
 from calc_functions import *
 
