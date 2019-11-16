@@ -46,20 +46,36 @@ def solveEquation(equation):
 def buildEquation(equation,label):
     return ""
 
-def displayEquation(equation,win):
-    pass
+def displayEquation(equation,win): 
+    while isButtonPressed == True:
+        x1 = display[0]
+        y2 = display[1]
+        labl = display[2]
+        widt = display[3]
 
+        # Create the rectangle for the display
+        aRectangle = Rectangle(Point(x + widt/2, y - widt/2),
+                               Point(x - widt/2, y + widt/2))
+        aRectangle.draw(win)
+        aRecangle.setFill("lightgrey")
+        # Add the label
+        text = Text(Point(x1,y2), labl)
+        text.draw(win)
+    
 def main():
-    buttons = [[.5,.5,'+/-',1],[1.5,.5,'0',1],[2.5,.5,'.',1],[3.5,.5,'=',1],
-               [.5,1.5,'1',1],[1.5,1.5,'2',1],[2.5,1.5,'3',1],[3.5,1.5,'+',1],
-               [.5,2.5,'4',1],[1.5,2.5,'5',1],[2.5,2.5,'6',1],[3.5,2.5,'-',1],               
-               [.5,3.5,'7',1],[1.5,3.5,'8',1],[2.5,3.5,'9',1],[3.5,3.5,'*',1]]
+    display = [[.5, 5.5, "", 1]]
+    buttons = [[.5,4.5,'M+', 1],[1.5,4.5,'M-',1],[2.5,4.5,'MR',1],[3.5,4.5,'MC',1],
+               [.5,.5,'+/-',1], [1.5,.5,'0',1],  [2.5,.5,'.',1],  [3.5,.5,'=',1],
+               [.5,1.5,'1',1],  [1.5,1.5,'2',1], [2.5,1.5,'3',1], [3.5,1.5,'+',1],
+               [.5,2.5,'4',1],  [1.5,2.5,'5',1], [2.5,2.5,'6',1], [3.5,2.5,'-',1],               
+               [.5,3.5,'7',1],  [1.5,3.5,'8',1], [2.5,3.5,'9',1], [3.5,3.5,'*',1]]
     
     win = GraphWin('Calculator',400,600)
     win.setCoords(0, 0, 4, 6)
     drawKeypad(buttons, win)
     equation = ""
     display = ""
+    M = ""
     while True:
         click = win.getMouse()
         label = getLabel(buttons,click)
