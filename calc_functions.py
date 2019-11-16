@@ -2,8 +2,6 @@
 # Author: Reisha Puranik
 # Date: October 11, 2019
 
-# JA: You should move the main function to the calculator.py file
-
 def process(eq, op):
     if op == '/':
         print("here",eq)
@@ -37,6 +35,18 @@ def process(eq, op):
     else:
         print("Invalid operation")
 
+def memory(eqStr):
+    mem = result
+    if op == 'M+':
+        return result + mem
+    elif op == 'M-':
+        return result - mem
+    elif op == 'MR':
+        return result
+    elif op == 'MC':
+        print(" ")
+
+        
 def solve(eqStr):
     eq = eqStr.split()
     while len(eq) > 1:
