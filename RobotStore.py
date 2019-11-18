@@ -2,6 +2,8 @@
 # Author: Reisha Puranik
 # Date: November 12, 2019
 
+# JA: Always remember to add comments to your code
+
 class Product:
     
 

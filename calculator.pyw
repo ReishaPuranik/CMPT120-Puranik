@@ -6,6 +6,9 @@
 
 # You should add comments to your code
 
+# 11/17/2019: The calculator is not showing results.
+# I cannot test the memory functions
+
 from graphics import *
 from calc_functions import *
 
